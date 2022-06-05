@@ -3,6 +3,7 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { throttle } from 'lodash-es';
 import setCanvasDimensions from './setCanvasDimensions';
+import { HemisphereLight } from 'three';
 
 //setup
 const resizeUpdateInterval = 500;
@@ -77,17 +78,14 @@ sphere2.position.setY(33);
 sphere2.position.setX(45);
 sphere2.position.setZ(-20);
 
-scene.add(octahedron1);
-scene.add(octahedron2);
-scene.add(icosahedron1);
-scene.add(icosahedron2);
-scene.add(sphere1);
-scene.add(sphere2);
+scene.add(octahedron1, octahedron2, icosahedron1, icosahedron2, sphere1, sphere2);
 
 //add lights
-const light = new THREE.PointLight(0xFFFFFF);
+const light = new THREE.PointLight(0xFFFFFF, 0.5);
+const hemLight = new THREE.HemisphereLight(0x579FE0, 0xB541D7, 1.0);
+const ambient = new THREE.AmbientLight(0xFFFFFF, 0.2);
 light.position.set(25,25,10);
-scene.add(light);
+scene.add(light, hemLight, ambient);
 
 //particles
 const loader = new THREE.TextureLoader();
@@ -109,11 +107,16 @@ scene.add(particleMesh)
 //background
 scene.background = new THREE.Color(0x200c54);
 
+var dxPerFrame = 1;
+
 //render loop
+//var count = 0;
+//var sin = 0;
 function animate() {
   requestAnimationFrame(animate);
   renderer.render(scene, camera);
   controls.update();
+
 
   octahedron1.rotation.x += -0.001;
   octahedron2.rotation.x += 0.001;
@@ -128,8 +131,15 @@ function animate() {
   sphere1.rotation.y += -0.001;
   sphere2.rotation.y += 0.001;
 
+  /*
+  count += count + 0.001;
+  sin = Math.sin(count);
+  octahedron1.position.x += 1/50*(sin);
+  */
+
   particleMesh.rotation.x += -0.002;
   particleMesh.rotation.y += -0.002;
+  particleMesh.rotation.z += -0.002;
 
 }
 
