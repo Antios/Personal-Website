@@ -52,7 +52,7 @@ const particleMesh = new THREE.Points(particleShape, particleMaterial)
 scene.add(particleMesh)
 
 //background
-scene.background = new THREE.Color(0x200c54);
+scene.background = new THREE.Color(0x1C2341);
 
 //render loop
 function animate() {
