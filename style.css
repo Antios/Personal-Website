@@ -1,5 +1,28 @@
 @import url("https://use.typekit.net/lik6wyg.css");
 
+@keyframes transitionLoad {
+  from {
+    opacity: 0;
+    transform: rotateX(-10deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: rotateX(0);
+  }
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 100%;
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
 
 canvas {
   position: fixed;
@@ -36,6 +59,7 @@ header {
   padding: 2rem;
   margin-bottom: var(--spacing);
   border-radius: 8px;
+  animation: transitionLoad 2s;
 }
 
 section {
@@ -46,6 +70,7 @@ section {
     line-height: 1.5;
     margin-bottom: var(--spacing);
     border-radius: 8px;
+    animation: slidein 3.5s;
   }
 
 canvas {
