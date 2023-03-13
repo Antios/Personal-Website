@@ -46,7 +46,7 @@ main {
   position: absolute;
   width: 100%;
   margin: 0px auto;
-  padding: 120px 0px;
+  padding-top: 120px;
   
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -72,6 +72,36 @@ section {
     border-radius: 8px;
     animation: slidein 3.5s;
   }
+
+footer {
+    grid-column: 1 / 13;
+    padding: 0.5rem;
+    background: var(--dark-bg);
+    display: grid;
+    align-items: center;
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr); /* adjust the number of columns to match your grid */
+    /* other styles */
+}
+
+.footer-item {
+    /* adjust this to your needs */
+    grid-column: 6 / 8;
+    text-align: center;
+    padding: 0.5rem;
+}
+
+.links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.link {
+  display: inline-block; /* or inline */
+  margin-right: 10px; /* add some space between the items */
+}
 
   @media screen and (max-width: 800px) {
     header, section {
